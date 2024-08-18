@@ -4,3 +4,6 @@ nest new nest-api
 nest generate controller user
 nest generate module user
 nest generate service user
+
+npm install bcrypt
+npm install -D @types/bcrypt

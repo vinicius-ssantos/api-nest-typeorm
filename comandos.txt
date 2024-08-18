@@ -1,0 +1,2 @@
+npm install -g @nestjs/cli
+nest new task-management-api

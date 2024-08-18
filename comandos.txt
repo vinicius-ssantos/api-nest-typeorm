@@ -1,2 +1,6 @@
 npm install -g @nestjs/cli
-nest new task-management-api
+nest new nest-api
+
+nest generate controller user
+nest generate module user
+nest generate service user

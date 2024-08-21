@@ -1,9 +1,54 @@
 npm install -g @nestjs/cli
 nest new nest-api
 
+npm install bcrypt
+npm install -D @types/bcrypt
+
+npm install uuid
+npm install -D @types/uuid
+
+npm install @nestjs/config  ---IMPORTANTE
+npm install @nestjs/jwt
+
 nest generate controller user
 nest generate module user
 nest generate service user
 
-npm install bcrypt
-npm install -D @types/bcrypt
+nest generate module author
+nest generate controller author
+nest generate service author
+
+nest generate module post
+nest generate controller post
+nest generate service post
+
+nest generate module comment
+nest generate controller comment
+nest generate service comment
+
+nest generate module auth
+nest generate controller auth
+nest generate service auth
+
+nest generate guard auth
+npm install class-validator
+npm install class-transformer
+
+npm install typeorm @nestjs/typeorm
+
+nest generate module db
+
+npm install pg
+npm install dotenv
+
+criar docker-compose.yml
+
+adicionar ao package.json
+
+"typeorm": "ts-node ./node_modules/typeorm/cli",
+"migration:create": "npm run typeorm -- migration:create ./src/db/migrations/$npm_config_name",
+"migration:run": "npm run typeorm migration:run -- -d ./src/db/typeOrm.migration-config.ts",
+"migration:revert": "npm run typeorm migration:revert -- -d ./src/db/typeOrm.migration-config.ts"
+
+
+modificar o queryrunner e adiocionar parametros a query

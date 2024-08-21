@@ -1,12 +1,15 @@
-import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
-import { FindAllParameters, UserDto } from "./user.dto";
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { FindAllParameters, UserDto } from './user.dto';
+import { v4 as uuid } from "uuid";
 
 @Injectable()
 export class UserService {
-  private users :UserDto[] = [];
-  create(user){
+  private users: UserDto[] = [];
+
+  create(user) {
+    user.id = uuid()
     this.users.push(user);
-    console.log(this.users);
+    console.log(user);
   }
 
   findById(id: string): UserDto {
@@ -56,7 +59,4 @@ export class UserService {
       HttpStatus.BAD_REQUEST,
     );
   }
-
-
-
 }

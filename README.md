@@ -76,13 +76,13 @@ A estrutura do código dentro do diretório `src/` segue a organização padrão
 - **Services**: Serviços contêm a lógica de negócio e são injetados nos controladores.
 - **Entities**: Definições de entidades e modelos para interação com o banco de dados.
 
-## Contribuição
 
+## [Justificativa](justificativa.md)
 
+Uma breve descrição dos motivos pelo qual foi escolhido typeORM [`justificativa.md`](justificativa.md).
 
+## [Integrantes](integrantes.md)
 
-Sinta-se à vontade para abrir issues e enviar pull requests. Certifique-se de seguir as boas práticas e garantir que todos os testes passem antes de submeter.
+Lista dos integrantes do grupo [`integrantes.md`](integrantes.md).
 
 ---
-
-Este é um template inicial para o README. Você pode ajustar conforme as funcionalidades específicas do projeto forem sendo desenvolvidas e documentadas. Se precisar de mais detalhes ou alterações, estou à disposição para ajudar!

@@ -1,36 +1,44 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, Query } from "@nestjs/common";
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+  Query,
+} from '@nestjs/common';
 
-
-import { PostService } from "./post.service";
-import { FindAllParameters, PostDto } from "./post.dto";
+import { PostService } from './post.service';
+import { FindAllParameters, PostDto } from './post.dto';
+import { TaskRouteParameters } from '../user/user.dto';
 
 @Controller('post')
 export class PostController {
-  constructor(private readonly postService:PostService ) {}
+  constructor(private readonly postService: PostService) {}
 
   @Post()
-  create(@Body() post: PostDto) {
-    this.postService.create(post);
+  async create(@Body() post: PostDto): Promise<PostDto> {
+    return await this.postService.create(post);
   }
 
   @Get('/:id')
-  findById(@Param('id') id: string): PostDto {
-    return this.postService.findById(id);
+  async findById(@Param('id') id: string): Promise<PostDto> {
+    return await this.postService.findById(id);
   }
 
   @Get()
-  findAll(@Query() params: FindAllParameters): PostDto[] {
-    return this.postService.findAll(params);
+  async findAll(@Query() params: FindAllParameters): Promise<PostDto[]> {
+    return await this.postService.findAll(params);
   }
 
-  @Put()
-  update(@Body() post: PostDto) {
-    this.postService.update(post);
+  @Put('/:id')
+  async update(@Param() params: TaskRouteParameters, @Body() post: PostDto) {
+    await this.postService.update(params.id, post);
   }
 
   @Delete('/:id')
-  remove(@Param('id') id: string) {
-    return this.postService.remove(id);
+  async remove(@Param('id') id: string) {
+    return await this.postService.remove(id);
   }
-
 }

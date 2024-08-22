@@ -1,9 +1,8 @@
 import { UserDto } from "../user/user.dto";
-import { IsOptional, IsString, IsUUID } from "class-validator";
+import { IsOptional, IsString, IsUUID, MaxLength, MinLength } from "class-validator";
 
 export class AuthorDto {
   @IsString()
-  @IsUUID()
   userId: string;
 
   @IsUUID()
@@ -28,4 +27,9 @@ export interface FindAllParameters {
   tags: string;
   surname: string;
   completeName: string;
+}
+
+export class TaskRouteParameters {
+  @IsUUID()
+  id:string;
 }

@@ -16,3 +16,8 @@ export interface FindAllParameters {
   name: string;
   email: string;
 }
+
+export class TaskRouteParameters {
+  @IsUUID()
+  id:string;
+}

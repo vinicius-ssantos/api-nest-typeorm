@@ -1,7 +1,9 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, Query } from "@nestjs/common";
 
 import { CommentService } from "./comment.service";
-import { CommentDto, FindAllParameters } from "./comment.dto";
+import { CommentDto, FindAllParameters, TaskRouteParameters } from "./comment.dto";
+import { CommentEntity } from "../db/entities/comment.entity";
+
 
 
 @Controller('comment')
@@ -9,28 +11,28 @@ export class CommentController {
   constructor(private readonly commentService:CommentService ) {}
 
   @Post()
-  create(@Body() comment: CommentDto) {
-    this.commentService.create(comment);
+  async  create(@Body() comment: CommentDto):Promise<CommentEntity> {
+  return await  this.commentService.create(comment);
   }
 
   @Get('/:id')
-  findById(@Param('id') id: string): CommentDto {
-    return this.commentService.findById(id);
+  async findById(@Param('id') id: string): Promise<CommentDto> {
+    return await this.commentService.findById(id);
   }
 
   @Get()
-  findAll(@Query() params: FindAllParameters): CommentDto[] {
-    return this.commentService.findAll(params);
+  async  findAll(@Query() params: FindAllParameters): Promise<CommentDto[]> {
+    return await this.commentService.findAll(params);
   }
 
-  @Put()
-  update(@Body() comment: CommentDto) {
-    this.commentService.update(comment);
+  @Put('/:id')
+  async  update(@Param() params: TaskRouteParameters,@Body() comment: CommentDto) {
+    await   this.commentService.update(params.id,comment);
   }
 
   @Delete('/:id')
-  remove(@Param('id') id: string) {
-    return this.commentService.remove(id);
+  async  remove(@Param('id') id: string) {
+    return await this.commentService.remove(id);
   }
   
 }

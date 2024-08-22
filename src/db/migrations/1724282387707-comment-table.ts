@@ -9,10 +9,10 @@ export class CommentTable1724282387707 implements MigrationInterface {
             id uuid NOT NULL DEFAULT uuid_generate_v4(),
             text TEXT NOT NULL,
             post_id uuid,
-            author_id uuid,
+            user_id uuid,
             CONSTRAINT comment_pk PRIMARY KEY (id),
             FOREIGN KEY (post_id) REFERENCES "post" (id),
-            FOREIGN KEY (author_id) REFERENCES "author" (id)
+            FOREIGN KEY (user_id) REFERENCES "user" (id)
         );`,
         );
     }

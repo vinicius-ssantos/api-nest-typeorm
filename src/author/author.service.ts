@@ -19,7 +19,7 @@ export class AuthorService {
       userId: author.userId,
       tags: author.tags,
       surname: author.surname,
-      completeName: author.completeName,
+      completeName: author.completeName
     };
     const createdAuthor = await this.authorRepository.save(authorToSave);
     return this.mapEntityToDto(createdAuthor);
@@ -70,12 +70,12 @@ export class AuthorService {
   }
 
   private mapEntityToDto(authorEntity: AuthorEntity): AuthorDto {
-    return {
+    return <AuthorDto>{
       id: authorEntity.id,
       userId: authorEntity.userId,
       tags: authorEntity.tags,
       surname: authorEntity.surname,
-      completeName: authorEntity.completeName,
+      completeName: authorEntity.completeName
     };
   }
 
@@ -85,7 +85,7 @@ export class AuthorService {
       userId: authorDto.userId,
       tags: authorDto.tags,
       surname: authorDto.surname,
-      completeName: authorDto.completeName,
+      completeName: authorDto.completeName
     };
   }
 }

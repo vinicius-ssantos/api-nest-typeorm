@@ -1,5 +1,6 @@
 import { IsEmail, IsOptional, IsString, IsUUID, MaxLength, MinLength } from "class-validator";
 import {  ApiProperty } from "@nestjs/swagger";
+import { AuthorDto } from "../author/author.dto";
 
 export class UserDto {
 
@@ -16,6 +17,7 @@ export class UserDto {
   @ApiProperty( )
   @IsEmail({ }, { message: 'email inválido'  })
   email: string;
+
 }
 
 export interface FindAllParameters {

@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import { PostEntity } from "./post.entity";
+import { UserEntity } from "./user.entity";
 
 @Entity({ name: 'comment' })
 export class CommentEntity {
@@ -13,4 +15,11 @@ export class CommentEntity {
 
   @Column({ type: 'varchar', name: 'user_id' })
   userId: string;
+
+
+  @ManyToOne(() => PostEntity, post => post.comments, { onDelete: 'CASCADE' })
+  post?: PostEntity;
+
+  @ManyToOne(() => UserEntity, user => user.comments, { onDelete: 'CASCADE' })
+  user?: UserEntity;
 }

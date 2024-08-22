@@ -1,5 +1,6 @@
 import { IsOptional, IsString, IsUUID } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
+import { UserDto } from "../user/user.dto";
 
 export class AuthorDto {
 
@@ -25,6 +26,7 @@ export class AuthorDto {
   @IsString()
   @IsOptional()
   completeName: string;
+
 }
 
 

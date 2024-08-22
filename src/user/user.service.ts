@@ -18,9 +18,10 @@ export class UserService {
     const userToSave: UserEntity = {
       id: uuid(),
       name: user.name,
-      email: user.email,
+      email: user.email
     };
     const createdUser = await this.userRepository.save(userToSave);
+    console.log(createdUser);
     return this.mapEntityToDto(createdUser);
   }
 
@@ -31,7 +32,6 @@ export class UserService {
       throw new HttpException(`User with ID ${id} not found`, HttpStatus.NOT_FOUND,);
     }
     return this.mapEntityToDto(foundUser);
-
   }
 
   async findAll(params: FindAllParameters): Promise<UserDto[]> {
@@ -65,10 +65,10 @@ export class UserService {
   }
 
   private mapEntityToDto(userEntity: UserEntity): UserDto {
-    return {
+    return <UserDto>{
       id: userEntity.id,
       name: userEntity.name,
-      email: userEntity.email,
+      email: userEntity.email
     };
   }
 
@@ -76,7 +76,7 @@ export class UserService {
     return {
       id: userDto.id,
       name: userDto.name,
-      email: userDto.email,
+      email: userDto.email
     };
   }
 }

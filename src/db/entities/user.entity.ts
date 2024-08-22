@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, OneToOne } from "typeorm";
+import { AuthorEntity } from "./author.entity";
+import { CommentEntity } from "./comment.entity";
 
 
 @Entity({ name: 'user' })
@@ -12,4 +14,11 @@ export class UserEntity {
 
   @Column({ type: 'varchar' })
   email: string;
+
+
+  @OneToMany(() => AuthorEntity, author => author.user, { cascade: true })
+  authors?: AuthorEntity[];
+
+  @OneToMany(() => CommentEntity, comment => comment.user, { cascade: true })
+  comments?: CommentEntity[];
 }

@@ -1,15 +1,16 @@
 npm install -g @nestjs/cli
 nest new nest-api
 
-npm install bcrypt
-npm install -D @types/bcrypt
+npm install @nestjs/jwt -- NAO IMPLEMENTADO
+npm install bcrypt -- NAO IMPLEMENTADO
+npm install -D @types/bcrypt -- NAO IMPLEMENTADO
+nest generate module auth -- NAO IMPLEMENTADO
+nest generate controller auth -- NAO IMPLEMENTADO
+nest generate service auth -- NAO IMPLEMENTADO
+nest generate guard auth -- NAO IMPLEMENTADO
 
-npm install uuid
-npm install -D @types/uuid
 
-npm install @nestjs/config  ---IMPORTANTE
-npm install @nestjs/jwt
-
+### MODULOS ###
 nest generate controller user
 nest generate module user
 nest generate service user
@@ -25,26 +26,20 @@ nest generate service post
 nest generate module comment
 nest generate controller comment
 nest generate service comment
+### MODULOS ###
 
-nest generate module auth
-nest generate controller auth
-nest generate service auth
-
-nest generate guard auth
+npm install uuid
+npm install -D @types/uuid
+npm install @nestjs/config  ---IMPORTANTE para usar o dotenv e criar variaveis de ambiente no projeto
 npm install class-validator
 npm install class-transformer
-
 npm install typeorm @nestjs/typeorm
-
 nest generate module db
-
 npm install pg
 npm install dotenv
-
 criar docker-compose.yml
 
 adicionar ao package.json
-
 "typeorm": "ts-node ./node_modules/typeorm/cli",
 "migration:create": "npm run typeorm -- migration:create ./src/db/migrations/$npm_config_name",
 "migration:run": "npm run typeorm migration:run -- -d ./src/db/typeOrm.migration-config.ts",
@@ -52,3 +47,6 @@ adicionar ao package.json
 
 
 modificar o queryrunner e adiocionar parametros a query
+
+
+npm install --save @nestjs/swagger

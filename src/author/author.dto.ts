@@ -1,7 +1,9 @@
-import { UserDto } from "../user/user.dto";
-import { IsOptional, IsString, IsUUID, MaxLength, MinLength } from "class-validator";
+import { IsOptional, IsString, IsUUID } from "class-validator";
+import { ApiProperty } from "@nestjs/swagger";
 
 export class AuthorDto {
+
+  @ApiProperty( )
   @IsString()
   userId: string;
 
@@ -9,14 +11,17 @@ export class AuthorDto {
   @IsOptional()
   id: string;
 
+  @ApiProperty( )
   @IsString()
   @IsOptional()
   tags: string;
 
+  @ApiProperty( )
   @IsString()
   @IsOptional()
   surname: string;
 
+  @ApiProperty( )
   @IsString()
   @IsOptional()
   completeName: string;

@@ -1,14 +1,20 @@
 import { IsEmail, IsOptional, IsString, IsUUID, MaxLength, MinLength } from "class-validator";
+import {  ApiProperty } from "@nestjs/swagger";
 
 export class UserDto {
+
   @IsUUID()
   @IsOptional()
   id: string;
+
+  @ApiProperty( )
   @IsString()
   @MinLength(3)
-  @MaxLength(256)
+  @MaxLength(100)
   name: string;
-  @IsEmail()
+
+  @ApiProperty( )
+  @IsEmail({ }, { message: 'email inválido'  })
   email: string;
 }
 
